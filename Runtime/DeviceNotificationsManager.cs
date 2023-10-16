@@ -34,5 +34,10 @@ namespace DeviceNotifications
             return new DummyNotificationService();
 #endif
         }
+
+        public static void Dispose()
+        {
+            _notificationService = null;
+        }
     }
 }
