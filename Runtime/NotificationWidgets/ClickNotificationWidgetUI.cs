@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 namespace DeviceNotifications
 {
     [RequireComponent(typeof(RectTransform))]
-    public class NotificationWidgetUI : NotificationWidgetBase, IPointerClickHandler
+    public class ClickNotificationWidgetUI : NotificationWidget, IPointerClickHandler
     {
         public void OnPointerClick(PointerEventData eventData)
         {

@@ -4,7 +4,7 @@ namespace DeviceNotifications
 {
     public class DummyNotificationService : INotificationService
     {
-        public void NotifyUser(string msg)
+        public void Notify(string msg)
         {
             Debug.Log(msg);
 

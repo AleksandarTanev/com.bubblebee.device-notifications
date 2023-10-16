@@ -4,7 +4,7 @@ namespace DeviceNotifications
 {
     public class AndroidNotificationService : INotificationService
     {
-        public void NotifyUser(string msg)
+        public void Notify(string msg)
         {
             ShowAndroidToastMessage(msg);
         }

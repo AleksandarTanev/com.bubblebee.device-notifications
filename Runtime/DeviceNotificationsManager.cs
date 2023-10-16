@@ -15,7 +15,7 @@ namespace DeviceNotifications
                 _notificationService = GetDefaultNotificationService();
             }
 
-            _notificationService.NotifyUser(msg);
+            _notificationService.Notify(msg);
         }
 
         public static void SetNotificationService(INotificationService newNotificationService)

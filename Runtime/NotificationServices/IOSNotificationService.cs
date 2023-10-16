@@ -2,7 +2,7 @@ namespace DeviceNotifications
 {
     public class IOSNotificationService : INotificationService
     {
-        public void NotifyUser(string msg)
+        public void Notify(string msg)
         {
             // TODO
         }

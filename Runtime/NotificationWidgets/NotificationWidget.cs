@@ -1,16 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
+using System;
 using UnityEngine;
 
 namespace DeviceNotifications
 {
-    [RequireComponent(typeof(Collider))]
-    public class NotificationWidget : NotificationWidgetBase
+    public abstract class NotificationWidget : MonoBehaviour
     {
-        void OnMouseUp()
+        [SerializeField] private bool _debugMode = true;
+
+        protected Func<string> _messageProviderFunc;
+
+        protected void OnClick()
         {
-            base.OnClick();
+            if (_messageProviderFunc != null)
+            {
+                SendNotification(_messageProviderFunc.Invoke());
+            }
+            else if (_debugMode)
+            {
+                SendNotification(this.gameObject.name);
+            }
+        }
+
+        protected void SendNotification(string msg)
+        {
+            DeviceNotificationsManager.SendNotification(msg);
+        }
+
+        public void SetMessageProvider(Func<string> messageProvider)
+        {
+            _messageProviderFunc = messageProvider;
+        }
+
+        public void ClearMessageProvider()
+        {
+            _messageProviderFunc = null;
         }
     }
 }
+
