@@ -8,7 +8,7 @@ namespace DeviceNotifications
     [RequireComponent(typeof(Collider))]
     public class ClickNotificationWidgetGO : NotificationWidget
     {
-        void OnMouseUp()
+        public void OnMouseUp()
         {
             base.OnClick();
         }
