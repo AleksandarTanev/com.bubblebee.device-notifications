@@ -1,0 +1,17 @@
+{
+  "name": "com.bubblebee.device-notifications",
+  "version": "1.0.0",
+  "displayName": "Device Notifications",
+  "description": "This package provide the tools to show notifications on Android and IOS",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "keywords": [
+    "android",
+    "toast",
+    "ios",
+    "notification"
+  ],
+  "author": {
+    "name": "AleksandarTanev"
+  }
+}
