@@ -5,7 +5,7 @@ namespace DeviceNotifications
 {
     public abstract class NotificationWidgetBase : MonoBehaviour
     {
-        [SerializeField] private bool _debugMode;
+        [SerializeField] private bool _debugMode = true;
 
         protected Func<string> _messageProviderFunc;
 
@@ -17,7 +17,7 @@ namespace DeviceNotifications
             }
             else if (_debugMode)
             {
-                SendNotification($"Object clicked: {this.gameObject.name}");
+                SendNotification(this.gameObject.name);
             }
         }
 
