@@ -1,6 +1,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Usage](#usage)
+* [Tests](#tests)
 * [Samples](#samples)
 * [Setup](#setup)
 
@@ -16,6 +17,9 @@ There are a few helpful components that can be used directly or extended:
 * *ClickNotificationWidgetGO* - used to enable 2D and 3D objects to be clickable and to send a notification on click. You can tell it how to get the text to send.
 
 You change how the notifications are handled by the *DeviceNotificationsManager* by providing it with a class that implements *INotificationService*. (example can be seen in the samples)
+
+## Tests
+There are a few unity tests that can be run by using the Unity Test Framework.
 
 ## Samples
 There are a few samples included in the package that provide examples and other helpful tools
