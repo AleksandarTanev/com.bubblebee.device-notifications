@@ -8,13 +8,18 @@ namespace DeviceNotifications
     {
         [SerializeField] private bool _debugMode = true;
 
-        protected Func<string> _messageProviderFunc;
+        protected Func<string> _messageProvider;
+        protected Action<Action<string>> _delayedMessageProvider;
 
         protected void OnClick()
         {
-            if (_messageProviderFunc != null)
+            if (_messageProvider != null)
             {
-                SendNotification(_messageProviderFunc.Invoke());
+                SendNotification(_messageProvider.Invoke());
+            }
+            else if (_delayedMessageProvider != null)
+            {
+                _delayedMessageProvider.Invoke(SendNotification);
             }
             else if (_debugMode)
             {
@@ -29,13 +34,17 @@ namespace DeviceNotifications
 
         public void SetMessageProvider(Func<string> messageProvider)
         {
-            _messageProviderFunc = messageProvider;
+            _messageProvider = messageProvider;
+        }
+
+        public void SetDelayedMessageProvider(Action<Action<string>> delayedMessageProvider)
+        {
+            _delayedMessageProvider = delayedMessageProvider;
         }
 
         public void ClearMessageProvider()
         {
-            _messageProviderFunc = null;
+            _messageProvider = null;
         }
     }
 }
-
