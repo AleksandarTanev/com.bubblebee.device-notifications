@@ -10,6 +10,12 @@ namespace DeviceNotifications
 
         public static void SendNotification(string msg)
         {
+            if (string.IsNullOrEmpty(msg))
+            {
+                Debug.LogError("Notification message is Null or empty");
+                return;
+            }
+
             if (_notificationService == null)
             {
                 _notificationService = GetDefaultNotificationService();

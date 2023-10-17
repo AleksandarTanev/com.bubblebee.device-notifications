@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace DeviceNotifications
@@ -8,12 +9,17 @@ namespace DeviceNotifications
         [SerializeField] private bool _debugMode = true;
 
         protected Func<string> _messageProviderFunc;
+        protected Func<Action<string>, IEnumerator> _asyncMessageProviderFunc;
 
         protected void OnClick()
         {
             if (_messageProviderFunc != null)
             {
                 SendNotification(_messageProviderFunc.Invoke());
+            }
+            else if (_asyncMessageProviderFunc != null)
+            {
+                StartCoroutine(_asyncMessageProviderFunc(SendNotification));
             }
             else if (_debugMode)
             {
@@ -29,6 +35,11 @@ namespace DeviceNotifications
         public void SetMessageProvider(Func<string> messageProvider)
         {
             _messageProviderFunc = messageProvider;
+        }
+
+        public void SetAsyncMessageProvider(Func<Action<string>, IEnumerator> asyncMessageProviderFunc)
+        {
+            _asyncMessageProviderFunc = asyncMessageProviderFunc;
         }
 
         public void ClearMessageProvider()
